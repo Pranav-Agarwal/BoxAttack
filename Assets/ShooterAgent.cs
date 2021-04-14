@@ -9,11 +9,13 @@ public class ShooterAgent : Agent
 {
     Rigidbody rBody;
     public GameObject enemy;
+    public int enemyCount = 3;
     //public int maxHp = 100;
     //private int hp = maxHp;
 
     void Start () {
         rBody = GetComponent<Rigidbody>();
+        resetEnemies();
     }
 
     //public Transform Target;
@@ -22,7 +24,7 @@ public class ShooterAgent : Agent
 	    this.rBody.angularVelocity = Vector3.zero;
 	    this.rBody.velocity = Vector3.zero;
 	    this.transform.localPosition = new Vector3( 0, 1.5f, 0);
-     	Instantiate(enemy, new Vector3(0, 0, 0), Quaternion.identity);
+     	//Instantiate(enemy, new Vector3(0, 0, 0), Quaternion.identity);
 	    //this.hp = maxHp;
         // // Move the target to a new spot
         // Target.localPosition = new Vector3(Random.value * 8 - 4,
@@ -32,14 +34,14 @@ public class ShooterAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor){
 	    // Agent positions
-	    sensor.AddObservation(rBody.transform.position.x);
-	    sensor.AddObservation(rBody.transform.position.z);
+	    //sensor.AddObservation(rBody.transform.position.x);
+	    //sensor.AddObservation(rBody.transform.position.z);
    	 	// Agent velocity
-	    sensor.AddObservation(rBody.velocity.x);
-	    sensor.AddObservation(rBody.velocity.z);
+	    //sensor.AddObservation(rBody.velocity.x);
+	    //sensor.AddObservation(rBody.velocity.z);
 	    //Agent rotation
-	    sensor.AddObservation(rBody.rotation.y);
-	    sensor.AddObservation(rBody.angularVelocity.y);
+	    //sensor.AddObservation(rBody.rotation.y);
+	    //sensor.AddObservation(rBody.angularVelocity.y);
 
 
 	}
@@ -58,7 +60,7 @@ public class ShooterAgent : Agent
 	    //rBody.AddTorque(controlRotation * torqueMultiplier);
 	    rBody.velocity = new Vector3(actionBuffers.ContinuousActions[0]*speed,0,actionBuffers.ContinuousActions[1]*speed);
 	    rBody.angularVelocity = new Vector3(0,actionBuffers.ContinuousActions[2]*rotationSpeed,0);
-	    AddReward(1f);
+	    AddReward(5f);
 
 	    // // Rewards
 	    // float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
@@ -91,16 +93,28 @@ public class ShooterAgent : Agent
         if (other.gameObject.CompareTag("Enemy"))
         {
             //enemyManager.SetEnemiesActive();
-            AddReward(-1000f);
-            Destroy(other.gameObject);
+            AddReward(-10000f);
+            resetEnemies();
             EndEpisode();
         }
         else if (other.gameObject.CompareTag("Wall"))
         {
             //enemyManager.SetEnemiesActive();
-            AddReward(-1000f);
+            AddReward(-10000f);
+            resetEnemies();
             EndEpisode();
         }
+    }
+
+    public void resetEnemies(){
+    	Debug.Log("wtf");
+    	GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+   		foreach(GameObject enemy in enemies)
+   		GameObject.Destroy(enemy);
+   		for(int i=0;i<this.enemyCount;i++){
+   			Instantiate(this.enemy, new Vector3(0, 0, 0), Quaternion.identity);
+   			Debug.Log("done");
+   		}
     }
 
 }

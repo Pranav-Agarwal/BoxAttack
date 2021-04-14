@@ -1008,7 +1008,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!114 &3954841216478771764
 MonoBehaviour:
@@ -1027,6 +1027,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 1000
   enemy: {fileID: 5110833916709847672, guid: a46287fc0f1f62743b8bfa35c924fedf, type: 3}
+  enemyCount: 3
   speed: 10
   rotationSpeed: 10
 --- !u!114 &3954841216478771767
