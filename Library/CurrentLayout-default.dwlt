@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Hierarchy
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 123
+  controlID: 80
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 36
+  controlID: 16
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 37
+  controlID: 17
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -317,22 +317,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\prana\OneDrive\Documents\UnityProjects\BoxAttack
+  m_LastProjectPath: C:\Users\prana\Documents\Unity Projects\BoxAttack
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 6e5b0000
-    m_LastClickedID: 23406
-    m_ExpandedIDs: 00000000d0440000f8450000e247000000ca9a3b
+    m_SelectedIDs: 4e3f0000
+    m_LastClickedID: 16206
+    m_ExpandedIDs: 000000004e3f0000503f0000523f00002440000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -360,7 +360,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 
+    m_ExpandedIDs: 000000004e3f0000503f0000523f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -448,7 +448,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 406
   m_GlobalObjectId: 
   m_LockTracker:
     m_IsLocked: 0
@@ -483,7 +483,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0a54ffff1a7affffd4dfffffe0dfffffecdffffff4dffffff8dfffff00e0ffff04e0ffff08e0ffff0ce0ffff10e0ffff14e0ffff1ce0ffff64e0ffff68e0ffff8ce0ffff9ce0ffff8afaffff
+      m_ExpandedIDs: 52fbfffffa3e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -543,9 +543,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -62.677345, y: -7.7443132, z: -4.225269}
+    m_Target: {x: 13.054464, y: -54.30117, z: 53.10868}
     speed: 2
-    m_Value: {x: -62.677345, y: -7.7443132, z: -4.225269}
+    m_Value: {x: 13.054464, y: -54.30117, z: 53.10868}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -592,13 +592,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.05458172, y: -0.735781, z: 0.05972815, w: 0.67237055}
+    m_Target: {x: -0.40879545, y: -0.13310374, z: 0.06040133, w: -0.90084934}
     speed: 2
-    m_Value: {x: 0.054492004, y: -0.73678786, z: 0.059809886, w: 0.67126536}
+    m_Value: {x: -0.40888393, y: -0.13175179, z: 0.05978783, w: -0.90104437}
   m_Size:
-    m_Target: 33.46047
+    m_Target: 43.310047
     speed: 2
-    m_Value: 33.46047
+    m_Value: 41.445023
   m_Ortho:
     m_Target: 0
     speed: 2
