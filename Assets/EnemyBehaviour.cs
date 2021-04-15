@@ -6,7 +6,9 @@ public class EnemyBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform target;
-    public float speed = 1f;
+    public float speed;
+    Rigidbody rigidbody;
+    private bool isDead = false;
     void Start()
     {
     	float dir = (Random.Range(0f, 1f));
@@ -24,11 +26,24 @@ public class EnemyBehaviour : MonoBehaviour
 		}
        	 
        	target = GameObject.FindWithTag("Agent").transform;
+       	rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-    	transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
+    	if(!isDead){
+    		transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
+    	}
+    }
+
+    void die(Vector3 direction){
+    	isDead = true;
+    	Debug.Log("DEAD");
+    	rigidbody.constraints = RigidbodyConstraints.None;
+    	GetComponent<BoxCollider>().enabled = false;
+    	rigidbody.AddForce(direction * 200);
+    	rigidbody.AddTorque(transform.right * -2000);
+    	Destroy(gameObject,1.0f);
     }
 }

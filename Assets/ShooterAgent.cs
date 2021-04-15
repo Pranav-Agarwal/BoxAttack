@@ -9,12 +9,19 @@ public class ShooterAgent : Agent
 {
     Rigidbody rBody;
     public GameObject enemy;
+    public GameObject shootingPoint;
+    public GameObject flash;
+    private AudioSource gunSound;
     public int enemyCount = 3;
+    public int maxFireDelay = 50;
+    private int fireDelay = 0;
+    private bool shotAvailable = true;
     //public int maxHp = 100;
     //private int hp = maxHp;
 
     void Start () {
         rBody = GetComponent<Rigidbody>();
+        gunSound = GetComponent<AudioSource>();
         resetEnemies();
     }
 
@@ -24,6 +31,7 @@ public class ShooterAgent : Agent
 	    this.rBody.angularVelocity = Vector3.zero;
 	    this.rBody.velocity = Vector3.zero;
 	    this.transform.localPosition = new Vector3( 0, 1.5f, 0);
+	    this.transform.rotation = Quaternion.Euler(0,0,0);
      	//Instantiate(enemy, new Vector3(0, 0, 0), Quaternion.identity);
 	    //this.hp = maxHp;
         // // Move the target to a new spot
@@ -42,6 +50,7 @@ public class ShooterAgent : Agent
 	    //Agent rotation
 	    //sensor.AddObservation(rBody.rotation.y);
 	    //sensor.AddObservation(rBody.angularVelocity.y);
+	    sensor.AddObservation(shotAvailable);
 
 
 	}
@@ -60,7 +69,9 @@ public class ShooterAgent : Agent
 	    //rBody.AddTorque(controlRotation * torqueMultiplier);
 	    rBody.velocity = new Vector3(actionBuffers.ContinuousActions[0]*speed,0,actionBuffers.ContinuousActions[1]*speed);
 	    rBody.angularVelocity = new Vector3(0,actionBuffers.ContinuousActions[2]*rotationSpeed,0);
-	    AddReward(5f);
+	    if(actionBuffers.ContinuousActions[3]>0){
+	    	shoot();
+	    }
 
 	    // // Rewards
 	    // float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
@@ -79,12 +90,25 @@ public class ShooterAgent : Agent
 	    // }
 	}
 
+    private void FixedUpdate()
+    {
+        if (!shotAvailable)
+        {
+            fireDelay--;
+
+            if (fireDelay <= 0)
+                shotAvailable = true;
+        }
+        AddReward(0.02f);
+    }
+
 	public override void Heuristic(in ActionBuffers actionsOut)
 	{
 	    var continuousActionsOut = actionsOut.ContinuousActions;
 	    continuousActionsOut[0] = Input.GetAxis("Horizontal");
 	    continuousActionsOut[1] = Input.GetAxis("Vertical");
 	    continuousActionsOut[2] = Input.GetAxis("Rotate");
+	    continuousActionsOut[3] = Input.GetKey("i")?1f:-1f;
 	    //Debug.Log(continuousActionsOut[0]+" "+continuousActionsOut[1]+" "+continuousActionsOut[2]);
 	}
 
@@ -93,14 +117,15 @@ public class ShooterAgent : Agent
         if (other.gameObject.CompareTag("Enemy"))
         {
             //enemyManager.SetEnemiesActive();
-            AddReward(-10000f);
+            AddReward(-100f);
             resetEnemies();
             EndEpisode();
+            Debug.Log("twest");
         }
         else if (other.gameObject.CompareTag("Wall"))
         {
             //enemyManager.SetEnemiesActive();
-            AddReward(-10000f);
+            AddReward(-200f);
             resetEnemies();
             EndEpisode();
         }
@@ -115,6 +140,33 @@ public class ShooterAgent : Agent
    			Instantiate(this.enemy, new Vector3(0, 0, 0), Quaternion.identity);
    			Debug.Log("done");
    		}
+    }
+
+    private void shoot(){
+    	if(shotAvailable){
+    		fireDelay = maxFireDelay;
+    		shotAvailable = false;
+    		int layerMask = 1 << 8;
+    		gunSound.PlayOneShot(gunSound.clip);
+    		Instantiate(this.flash, shootingPoint.transform.position, Quaternion.LookRotation(shootingPoint.transform.right*-1));
+    		RaycastHit hit;
+    		Ray ray = new Ray(shootingPoint.transform.position, shootingPoint.transform.up);
+    		if (Physics.Raycast(ray,out hit, Mathf.Infinity, layerMask))
+			{
+			 	hit.collider.gameObject.SendMessage("die", shootingPoint.transform.up);
+			 	Instantiate(enemy, new Vector3(0, 100f, 0), Quaternion.identity);
+			 	AddReward(50f);
+			}
+			else{
+				AddReward(-5f);
+			}
+
+    	}
+    	else{
+		 	//Debug.DrawRay(shootingPoint.transform.position, shootingPoint.transform.up * 20, Color.white,2f);
+    		//Debug.Log("The ray missed an enemy");
+    		return;
+    	}
     }
 
 }

@@ -786,12 +786,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3954841216478771758, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
-      propertyPath: m_Name
-      value: Agent
+    - target: {fileID: 515979301, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3954841216478771758, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
-      propertyPath: m_TagString
+      propertyPath: m_Name
       value: Agent
       objectReference: {fileID: 0}
     - target: {fileID: 3954841216478771762, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
@@ -838,45 +838,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3954841216478771763, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
-      propertyPath: m_Constraints
-      value: 84
-      objectReference: {fileID: 0}
     - target: {fileID: 3954841216478771764, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
       propertyPath: speed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3954841216478771764, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
-      propertyPath: MaxStep
-      value: -1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3954841216478771764, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
       propertyPath: enemyCount
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3954841216478771764, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
+      propertyPath: maxFireDelay
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954841216478771764, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
       propertyPath: rotationSpeed
-      value: 2
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954841216478771765, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
+      propertyPath: m_RayLength
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 3954841216478771765, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
       propertyPath: m_MaxRayDegrees
-      value: 180
+      value: 50.2
       objectReference: {fileID: 0}
     - target: {fileID: 3954841216478771765, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
-      propertyPath: m_RaysPerDirection
-      value: 6
+      propertyPath: m_SphereCastRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954841216478771765, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
+      propertyPath: m_RayLayerMask.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3954841216478771767, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
-      propertyPath: m_BehaviorName
-      value: ShooterAgent
-      objectReference: {fileID: 0}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: df37d193700738d41bf6146b6d1d954c, type: 3}
     - target: {fileID: 3954841216478771767, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
       propertyPath: m_BehaviorType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3954841216478771767, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
-      propertyPath: m_BrainParameters.VectorObservationSize
-      value: 0
+      propertyPath: m_InferenceDevice
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d74c625878f5e9e4c950014b15b4e508, type: 3}
