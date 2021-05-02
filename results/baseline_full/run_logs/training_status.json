@@ -1,0 +1,35 @@
+{
+    "ShooterAgent": {
+        "checkpoints": [
+            {
+                "steps": 139336,
+                "file_path": "results\\baseline_full\\ShooterAgent\\ShooterAgent-139336.onnx",
+                "reward": null,
+                "creation_time": 1619896261.6199627
+            },
+            {
+                "steps": 499962,
+                "file_path": "results\\baseline_full\\ShooterAgent\\ShooterAgent-499962.onnx",
+                "reward": 3581.6466217041016,
+                "creation_time": 1619897767.8230882
+            },
+            {
+                "steps": 500847,
+                "file_path": "results\\baseline_full\\ShooterAgent\\ShooterAgent-500847.onnx",
+                "reward": 2712.5399684906006,
+                "creation_time": 1619897767.9391134
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500847,
+            "file_path": "results\\baseline_full\\ShooterAgent.onnx",
+            "reward": 2712.5399684906006,
+            "creation_time": 1619897767.9391134
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.2.0",
+        "mlagents_version": "0.25.0",
+        "torch_version": "1.8.1+cpu"
+    }
+}
